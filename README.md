@@ -12,6 +12,8 @@ Geleneksel yardım kuruluşlarında para akışı çoğu zaman görünmezdir. Bu
 - Ödemelerin yalnızca yönetici tarafından yapılabilmesini,
 - Tüm işlemlerin Etherscan üzerinden doğrulanabilmesini sağlar.
 
+<img width="912" height="508" alt="blokchain_proje_sema" src="https://github.com/user-attachments/assets/cdf832a1-ac9e-47fc-a4e7-7f9a253454d7" />
+
 ---
 
 ## 🛠️ Kullanılan Teknolojiler
