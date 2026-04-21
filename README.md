@@ -134,3 +134,6 @@ bagis-takip/
 ├── README.md
 └── package.json
 ```
+
+<img width="450" height="908" alt="WhatsApp Image 2026-04-21 at 13 29 42" src="https://github.com/user-attachments/assets/30135496-f9ef-4b60-9b55-f36188ca1fe7" />
+
