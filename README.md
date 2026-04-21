@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# 🔗 Şeffaf Bağış ve Yardım Takip Platformu
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Blokzincir teknolojisi kullanılarak geliştirilen bu platform, bağışların bağışçıdan son kullanıcıya kadar şeffaf biçimde takip edilmesini sağlar. Ethereum Sepolia test ağında çalışan akıllı kontrat sayesinde tüm işlemler herkese açık ve değiştirilemez şekilde kaydedilir.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📌 Proje Hakkında
 
-### `npm start`
+Geleneksel yardım kuruluşlarında para akışı çoğu zaman görünmezdir. Bu proje, akıllı kontratlar aracılığıyla:
+- Bağışların blokzincire kaydedilmesini,
+- Kontrat bakiyesinin herkese açık görünmesini,
+- Ödemelerin yalnızca yönetici tarafından yapılabilmesini,
+- Tüm işlemlerin Etherscan üzerinden doğrulanabilmesini sağlar.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Kullanılan Teknolojiler
 
-### `npm test`
+| Katman | Teknoloji |
+|---|---|
+| Akıllı Kontrat | Solidity (EVM: London, v0.8.19) |
+| Geliştirme & Deploy | Remix IDE |
+| Test Ağı | Ethereum Sepolia |
+| Frontend | React.js |
+| Blokzincir Bağlantısı | ethers.js v6 |
+| Cüzdan | MetaMask |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📋 Kurulum Gereksinimleri
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Node.js
+React uygulamasını çalıştırmak için gereklidir.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 🔗 https://nodejs.org adresinden **LTS** sürümünü indirin ve kurun.
+- Kurulumu doğrulamak için terminalde şunu çalıştırın:
+```bash
+node --version
+```
+`v18.x.x` veya üzeri bir sürüm görünmelidir.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. MetaMask
+Ethereum cüzdanı ve ağ bağlantısı için gereklidir.
 
-### `npm run eject`
+- 🔗 https://metamask.io/download adresinden tarayıcı eklentisini indirin.
+- Kurulum sırasında yeni cüzdan oluştur veya mevcut cüzdanı import edin.
+- **Seed phrase'inizi (12 kelime) mutlaka güvenli bir yere kaydedin.**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Sepolia Test ETH
+İşlem yapabilmek için test ağında ETH gerekmektedir. Aşağıdaki faucet'lerden ücretsiz alınabilir:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 🔗 https://cloud.google.com/application/web3/faucet/ethereum/sepolia (Google hesabı gerekli)
+- 🔗 https://faucets.chain.link/sepolia (Chainlink faucet)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 Projeyi Lokal Ortamda Çalıştırma
 
-## Learn More
+### Adım 1 — Repoyu klonla
+```bash
+git clone https://github.com/KULLANICI_ADIN/bagis-takip.git
+cd bagis-takip
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Adım 2 — Bağımlılıkları yükle
+```bash
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Adım 3 — Uygulamayı başlat
+```bash
+npm start
+```
+Tarayıcıda otomatik olarak `http://localhost:3000` açılır.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## ⚙️ Kontrat Adresi Değiştirme (Kendi Kontratını Deploy Etmek İsteyenler İçin)
 
-### Analyzing the Bundle Size
+Kendi kontratınızı deploy etmek istiyorsanız `src/App.js` dosyasında şu satırı güncelleyin:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+const KONTRAT_ADRESI = "SIZIN_KONTRAT_ADRESINIZ";
+```
 
-### Making a Progressive Web App
+Kontratı deploy etmek için:
+1. 🔗 https://remix.ethereum.org adresine gidin
+2. `BagisTakip.sol` dosyasını oluştur ve kontrat kodunu yapıştırın
+3. Compiler ayarları: Solidity `0.8.19`, EVM Version: `london`
+4. Deploy & Run sekmesinde Environment: `Injected Provider - MetaMask` seçin
+5. MetaMask'ta Sepolia ağını seçin
+6. "Deploy & Verify" butonuna basın ve MetaMask'tan onaylayın
+7. Deployed Contracts bölümünden yeni kontrat adresini kopyalayın
+8. `App.js` dosyasındaki `KONTRAT_ADRESI` değişkenini güncelleyin
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🧪 Test Etme
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Terminali açın ve `npm start` yazarak uygulamayı başlatın.
+2. MetaMask'ta **Sepolia** ağını seçin
+3. Tarayıcıda `localhost:3000` açın
+4. **"MetaMask ile Bağlan"** butonuna tıklayın, MetaMask'tan onaylayın
+5. Açıklama ve miktar (örn: `0.001`) girerek **"Bağış Gönder"** butonuna basın
+6. MetaMask onay penceresini onaylayın, işlem tamamlanınca bağış listesinde görünecektir
+7. İşlemi Etherscan'da doğrulayabilirsiniz: https://sepolia.etherscan.io
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🔍 Canlı Kontrat
 
-### `npm run build` fails to minify
+Sepolia ağındaki kontrat adresi:
+```
+0xfa8a24a6e5cc549360ea138527ff1562d663d7c4
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Etherscan üzerinden tüm işlemleri görüntüle:
+🔗 https://sepolia.etherscan.io/address/0xfa8a24a6e5cc549360ea138527ff1562d663d7c4
+
+---
+
+## 📁 Proje Yapısı
+
+```
+bagis-takip/
+├── public/
+│   └── index.html
+├── src/
+│   └── App.js          ← Ana React bileşeni, tüm frontend kodu burada
+├── contracts/
+│   └── BagisTakip.sol  ← Solidity akıllı kontrat kodu
+├── README.md
+└── package.json
+```
