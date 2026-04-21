@@ -17,7 +17,7 @@
 import { useState } from "react";
 import { ethers } from "ethers";
 
-// ⚠️ Kendi kontratını deploy ettiysen bu adresi değiştir
+// ⚠️ Kendi kontratınızı deploy ettiyseniz bu adresi değiştirin!
 const KONTRAT_ADRESI = "0xfa8a24a6e5cc549360ea138527ff1562d663d7c4";
 
 // Kontratın ABI'si — Remix'ten kopyalandı (JSON formatı)
